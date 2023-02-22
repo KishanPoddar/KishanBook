@@ -5,6 +5,7 @@ const app = express()
 const cors = require('cors')
 const authRoute = require('./routes/auth')
 const notesRoute = require('./routes/notes')
+import { join } from "path";
 
 
 dotenv.config();
@@ -17,6 +18,13 @@ app.use(cors({ credentials: true, origin: true }))
 //Available Routes
 app.use('/api/auth', authRoute)
 app.use('/api/notes', notesRoute)
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(join(__dirname, "client", "build")));
+    app.get("*", (req, res) => {
+        res.sendFile(join(__dirname, "client", "build", "index.html"));
+    });
+}
 
 
 app.listen(5000, () => {
