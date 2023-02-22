@@ -5,7 +5,7 @@ const app = express()
 const cors = require('cors')
 const authRoute = require('./routes/auth')
 const notesRoute = require('./routes/notes')
-import { join } from "path";
+const { join } = require('path');
 
 
 dotenv.config();
