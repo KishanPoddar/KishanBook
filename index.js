@@ -28,5 +28,5 @@ if (process.env.NODE_ENV === "production") {
 
 
 app.listen(5000, () => {
-    console.log(`iNotebook backend running`)
+    console.log(`KishanBook backend running`)
 })
